@@ -1,0 +1,20 @@
+<wsp:Policy
+ xmlns:tpa="http://xsd.tns.tibco.com/governance/policy/action/2009" 
+ xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+ xmlns:wssp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+	<wsp:All>
+		<wsp:Policy>
+			<tpa:WssProcessor ResourceInstance="WssAsp"/>
+		</wsp:Policy>
+		<wsp:Policy>
+			<tpa:VerifyAuthentication>
+				<wssp:SignedSupportingTokens>
+                    <wssp:SamlToken />
+				</wssp:SignedSupportingTokens>
+			</tpa:VerifyAuthentication>
+		</wsp:Policy>
+        <wsp:Policy>
+            <tpa:VerifyDecryption/>
+        </wsp:Policy>      
+	</wsp:All>
+</wsp:Policy>

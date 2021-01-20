@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsp:Policy
+    xmlns:tpa="http://xsd.tns.tibco.com/governance/policy/action/2009"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wssp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:xacml="urn:oasis:names:tc:xacml:2.0:policy:schema:os" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+    <wsp:All>
+        <wsp:Policy>
+            <wsp:All>
+                <tpa:Authorization>
+                    <tpa:ByRole>
+                        <tpa:Default>
+                            <xacml:Rule Effect="Deny" RuleId="">
+                                <xacml:Condition>
+                                    <xacml:Apply FunctionId="always-true">
+                                    </xacml:Apply>
+                                </xacml:Condition>
+                            </xacml:Rule>
+                        </tpa:Default>
+                        <tpa:Operation>
+                            <xacml:Rule Effect="Permit" RuleId="">
+                                <xacml:Target>
+                                    <xacml:Actions>
+                                        <xacml:Action>
+                                            <xacml:ActionMatch MatchId="http://tempuri.org">
+                                                <!--
+                                                <xacml:AttributeValue DataType="xsd:string">GetBooks</xacml:AttributeValue>
+                                                -->
+                                                <xacml:AttributeValue DataType="xsd:string">queryBookByAuthorBW</xacml:AttributeValue>
+                                                <xacml:AttributeSelector DataType="xsd:string"
+                                                    RequestContextPath="" />
+                                            </xacml:ActionMatch>
+                                        </xacml:Action>
+                                    </xacml:Actions>
+                                </xacml:Target>
+                                <xacml:Condition>
+                                    <xacml:Apply FunctionId="is-in">
+                                        <xacml:AttributeValue DataType="xsd:string">Accounting Managers</xacml:AttributeValue>
+                                    </xacml:Apply>
+                                </xacml:Condition>
+                            </xacml:Rule>
+                        </tpa:Operation>
+                    </tpa:ByRole>
+                </tpa:Authorization>
+            </wsp:All>
+        </wsp:Policy>
+    </wsp:All>
+</wsp:Policy>
+

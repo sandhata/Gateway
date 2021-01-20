@@ -1,0 +1,23 @@
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+   <wsp:All>
+      <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+         xmlns:ns1="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+         <ns:Signature 
+            xmlns:ns="http://xsd.tns.tibco.com/governance/policy/action/2009" 
+            ResourceInstance="SubjectIsp">
+            <ns1:SignedParts >
+               <ns1:Body />
+               <ns1:Header />
+            </ns1:SignedParts>
+            
+            <!-- The keyAlias should be replaced with a valid one from the keystore from the TipIsp -->
+            <ns:keyAlias>john_key</ns:keyAlias>
+            
+            <!-- Change the AlgorithmSuite to use a different encryption algorithm -->
+            <ns1:AlgorithmSuite>
+               <ns1:Basic128 />
+            </ns1:AlgorithmSuite>
+         </ns:Signature>
+      </wsp:Policy>
+   </wsp:All>
+</wsp:Policy>

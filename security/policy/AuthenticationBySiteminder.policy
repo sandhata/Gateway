@@ -1,0 +1,17 @@
+<wsp:Policy
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wssp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:tpa="http://xsd.tns.tibco.com/governance/policy/action/2009" >
+    <wsp:All>
+        <wsp:ExactlyOne>
+            <tpa:AuthenticationByJaas>
+                <wssp:SupportingTokens>
+                    <tpa:ExactlyOne>
+                        <tpa:SiteminderToken />
+                    </tpa:ExactlyOne>
+                </wssp:SupportingTokens>
+                <tpa:SharedResourceLoginModule ResourceInstance="SiteminderAsp" />
+            </tpa:AuthenticationByJaas>
+        </wsp:ExactlyOne>
+    </wsp:All>
+</wsp:Policy>
