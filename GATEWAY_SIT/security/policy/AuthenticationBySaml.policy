@@ -1,0 +1,28 @@
+<wsp:Policy
+  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+  xmlns:wssp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+  xmlns:tpa="http://xsd.tns.tibco.com/governance/policy/action/2009">
+    <wsp:All>
+        <wsp:Policy >
+            <tpa:WssProcessor ResourceInstance="WssAsp"/>
+        </wsp:Policy>
+        <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+            <tpa:VerifyAuthentication>
+                <wsp:ExactlyOne>
+                    <wssp:SignedSupportingTokens>
+                        <wsp:ExactlyOne>
+		                    <wssp:SamlToken>
+		                        <!-- The following will enable verify IssuerName 
+		                        <wssp:IssuerName>urn:test.tibco.com</wssp:IssuerName>
+		                        -->
+		                        <!-- The following will enable verify SAML version 
+		                        <wssp:WssSamlV20Token11/>
+		                        -->
+		                    </wssp:SamlToken>
+                        </wsp:ExactlyOne>
+                    </wssp:SignedSupportingTokens>
+                </wsp:ExactlyOne>
+            </tpa:VerifyAuthentication>
+        </wsp:Policy>
+    </wsp:All>
+</wsp:Policy>
